@@ -44,8 +44,6 @@ def link_from_tag(tag = None):
 
     stream_data = open('stream_database.csv')
 
-   # return_stream = open('desired_stream.txt','w')
-
     return_stream_list = []
     tag_list = []
     operating_list = []
@@ -53,25 +51,35 @@ def link_from_tag(tag = None):
     for item in stream_data:
         operating_list.append(item.split(','))
     operating_list.pop(0)
+    print(operating_list)
     for item in operating_list:
-        if '\n' in item[1]:
-            item[1]= item[1][0:len(item[1])-1]
+        if '\n' in item[len(item)-1]:
+            item[len(item)-1]= item[len(item)-1][0:len(item[len(item)-1])-1]
 
+    print(operating_list)
     
     for item in operating_list:
         if tag in item:
-            tag_list.append(item[0])
-            return_stream_list.append(item[1])
+            tag_list.append(item[1:len(item)])
+            return_stream_list.append(item[0])
 
+    tag_list = tag_list[0]
+
+    print(tag_list[0])
+    print(return_stream_list)
+    print(tag)
 #    for item in return_stream_list:
 #       return_stream.write(str(item)+'\n')
+    for item in tag_list:
+        if tag == item:
+            print("WHYYYYYYYYYYYYY")
 
     stream_data.close()
 #    return_stream.close()
     if tag in tag_list:
         return render_template(
         'rand_1.html',
-        tag=tag,
+        tag=tag_list[0],
         link = return_stream_list[random.randint(0,len(return_stream_list)-1)]
         )
     else:

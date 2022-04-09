@@ -1,11 +1,11 @@
-﻿Tag,Stream Link
-koala,https://zoo.sandiegozoo.org/cams/koala-cam
-polar,https://zoo.sandiegozoo.org/cams/polar-cam
-hippo,https://zoo.sandiegozoo.org/cams/hippo-cam
-elephant,https://sdzsafaripark.org/cams/elephant-cam
-cheetah,https://nationalzoo.si.edu/webcams/cheetah-cub-cam
-panda,https://nationalzoo.si.edu/webcams/panda-cam
-naked_mole_rat,https://nationalzoo.si.edu/webcams/naked-mole-rat-cam
-lion,https://nationalzoo.si.edu/webcams/lion-cam
-elephant,https://nationalzoo.si.edu/webcams/elephants
-penguin,https://zoo.sandiegozoo.org/cams/penguin-cam
+﻿Stream Link,Tag,,,,,,
+https://zoo.sandiegozoo.org/cams/koala-cam,koala,ko,koa,ala,koal,coal,coala
+https://zoo.sandiegozoo.org/cams/polar-cam,polar,po,,,,,
+https://zoo.sandiegozoo.org/cams/hippo-cam,hippo,hi,,,,,
+https://sdzsafaripark.org/cams/elephant-cam,elephant,el,,,,,
+https://nationalzoo.si.edu/webcams/cheetah-cub-cam,cheetah,ch,,,,,
+https://nationalzoo.si.edu/webcams/panda-cam,panda,pa,,,,,
+https://nationalzoo.si.edu/webcams/naked-mole-rat-cam,naked_mole_rat,na,,,,,
+https://nationalzoo.si.edu/webcams/lion-cam,lion,li,,,,,
+https://nationalzoo.si.edu/webcams/elephants,elephant,el,,,,,
+https://zoo.sandiegozoo.org/cams/penguin-cam,penguin,pe,,,,,
