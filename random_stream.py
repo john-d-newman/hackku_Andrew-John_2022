@@ -7,6 +7,8 @@ Desc:  This file parses a csv file of stream names and tags
 
 '''
 import random
+import cgitb
+
 
 
 def link_from_tag(tag):
