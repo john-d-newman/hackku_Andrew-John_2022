@@ -6,16 +6,38 @@ Desc:  This file parses a csv file of stream names and tags
 
 
 '''
+from os import link
 import random
 
 from flask import Flask
+from datetime import datetime
+import re
+
 app = Flask(__name__)
-@app.route('/')
-def hello_world():
-    return 'Hello world!'
+
+@app.route("/")
+def home():
+    return "Hello, Flask!"
+
+@app.route("/hello/<name>")
+def hello_there(name):
+    now = datetime.now()
+    formatted_now = now.strftime("%A, %d %B, %Y at %X")
+
+    # Filter the name argument to letters only using regular expressions. URL arguments
+    # can contain arbitrary text, so we restrict to safe characters only.
+    match_object = re.match("[a-zA-Z]+", name)
+
+    if match_object:
+        clean_name = match_object.group(0)
+    else:
+        clean_name = "Friend"
+
+    content = "Hello there, " + clean_name + "! It's " + formatted_now
+    return content
 
 
-
+@app.route("/link_from_tag/<tag>")
 def link_from_tag(tag):
     stream_data = open('stream_database.csv')
 
@@ -41,9 +63,12 @@ def link_from_tag(tag):
 
     stream_data.close()
     return_stream.close()
+    return str(return_stream_list)
+
 
 #link_from_tag('elephant')
 
+@app.route('/random_stream/')
 def choose_rand_stream(stream_data_filename):
     stream_option = []
     file_object = open(str(stream_data_filename),'r')
@@ -61,4 +86,3 @@ def choose_rand_stream(stream_data_filename):
 
     
 
-print(choose_rand_stream('desired_stream.txt'))
