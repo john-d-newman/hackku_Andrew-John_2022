@@ -76,22 +76,22 @@ body {
 
 <section>
 <div class="header">
-<h1>Search Results:<h1>
+<h1>Search Results:{{tag}}<h1>
 </section>
 
 
 <section class="main">
 
-  <div class="fakeimg" style="height:200px;">Image</div>
-  <p>Placeholder text</p>
-
+  <div class="fakeimg" style="height:200px;"><a href={{link}} rel="nofollow noopener" target="_blank"><img title="Random Panda stream" src="https://images.pexels.com/photos/1661535/pexels-photo-1661535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" height="150" align="center"/></a></div>
+  <p>This is the first stream: <a href={{link}} rel="nofollow noopener" target="_blank">for {{ tag }}</p>
+  </a>
 </section>
 
 <section class="search">
  <p>Search up streams!:</p>
 
-  <form action=”” method=”POST”> 
-	<input type=”text” placeholder="Search.." name="input"> 
+  <form action="" method=”POST”> 
+	<input type=”text” placeholder="Search.." name="tag"> 
 
 </body>
 

@@ -8,17 +8,18 @@ Desc:  This file parses a csv file of stream names and tags
 '''
 from os import link
 import random
-from flask import render_template
+from flask import render_template, request
 from flask import Flask
 from datetime import datetime
 import re
+from flask import request
 
 app = Flask(__name__)
 
-@app.route("/<hold>")
+@app.route("/")
 def home():
     stream_data = open('stream_database.csv','r')
-    
+
     stream_list = []
     tag_list = []
     operating_list = []
@@ -63,13 +64,20 @@ def hello_there(name = None):
 '''
 
 
-@app.route("/link_from_tag/")
-@app.route("/link_from_tag/<tag>")
+
+
+
+@app.route("/search")
 def link_from_tag(tag = None):
-    tag = tag
-    if tag == None:
+
+    raw_tag = request.query_string.decode()
+    if raw_tag != '':
+        tag = raw_tag[4:len(raw_tag)]
+    
+
+    if tag == '' or tag == None:
         return render_template(
-            'rand_1.html',
+            'joe2.html',
             tag=tag,
             link = 'https://youtu.be/dQw4w9WgXcQ'
         )
@@ -95,6 +103,14 @@ def link_from_tag(tag = None):
             tag_list.append(item[1:len(item)])
             return_stream_list.append(item[0])
 
+
+    
+    if len(tag_list) == 0:
+        return render_template(
+            'joe2.html',
+            tag = tag,
+            link = 'https://youtu.be/dQw4w9WgXcQ'
+        )
     tag_list = tag_list[0]
 
     print(tag_list[0])
@@ -110,7 +126,7 @@ def link_from_tag(tag = None):
 #    return_stream.close()
     if tag in tag_list:
         return render_template(
-        'rand_1.html',
+        'joe2.html',
         tag=tag_list[0],
         link = return_stream_list[random.randint(0,len(return_stream_list)-1)]
         )
