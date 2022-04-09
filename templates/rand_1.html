@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hello, Flask</title>
+    </head>
+    <body>
+        {%if tag %}
+            <p>This is the first stream: <a href={{link}} rel="nofollow noopener" target="_blank">for {{ tag }}</a></p>
+        {% else %}
+            What tag, put it after whatever is in the URL.
+        {% endif %}
+    </body>
+</html>
