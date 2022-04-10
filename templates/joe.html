@@ -32,7 +32,7 @@ body {
 }
 
 .main {
-  height: 100vh;
+  height: 80vh;
   text-align: center;
   background: #D3D3D3;
   color: black;
@@ -47,6 +47,32 @@ body {
   padding: 20px;
 }
 
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.left {
+  flex: 50%;
+  padding: 30px;
+  margin: auto;
+}
+
+.right {
+  flex: 50%;
+  padding: 30px;
+  margin: auto;
+}
+
+.fakeimg {
+  background-color: #aaa;
+  width: 80%;
+  padding: 10px;
+  margin: auto;
+}
+
+
 
 </style>
 </head>
@@ -60,11 +86,30 @@ body {
 </section>
 
 
-<section class="main">
+<section class="home">
   <p>Search up streams!:</p>
 
-  <form action=”” method=”POST”> 
-	<input type=”text” placeholder="Search.." name="input"> 
+  <form action="" method=”POST”> 
+	<input type=”text” placeholder="Search.." name="tag"> 
+
+  <div class="row">
+    <div class="left">
+	<div class="fakeimg" style="height:200px;"><a href={{link1}} rel="nofollow noopener" target="_blank"><img src="//i.imgflip.com/6c1cok.jpg" height="150" align="center"/></a></div>
+	<h5>Here is {{tag1}}<a href={{link1}} rel="nofollow noopener" target="_blank"></a> <h5><br><br>
+	<div class="fakeimg" style="height:200px;"><a href={{link2}} rel="nofollow noopener" target="_blank"><img src="//i.imgflip.com/6c1cok.jpg" height="150" align="center"/></a></div>
+	<h5>Here is {{tag2}}<a href={{link2}} rel="nofollow noopener" target="_blank"></a><h5><br><br>
+    </div>
+  
+    <div class="right">
+    	<div class="fakeimg" style="height:200px;"><a href={{link3}} rel="nofollow noopener" target="_blank"><img src="//i.imgflip.com/6c1cok.jpg" height="150" align="center"/></a></div>
+    	<h5>Here is {{tag3}}<a href={{link3}} rel="nofollow noopener" target="_blank"></a><h5><br><br>
+    	<div class="fakeimg" style="height:200px;"><a href={{link4}} rel="nofollow noopener" target="_blank"><img src="//i.imgflip.com/6c1cok.jpg" height="150" align="center"/></a></div>
+    	<h5>Here is {{tag4}}<a href={{link4}} rel="nofollow noopener" target="_blank"></a><h5><br><br>
+    </div>
+  </div>
+  
+
+
 
 </section>
 
