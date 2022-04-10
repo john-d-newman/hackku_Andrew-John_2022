@@ -220,14 +220,35 @@ def search(tag):
         return "Tag not in options, try retyping or clicking an image"
 
 
-#@app.route('/addstream/')
-def addstream(stream_link,csvtags):
-    stream_file = open('stream_database.csv','a')
-    stream_file.write(str(stream_link) +',' + csvtags)
-    stream_file.close()
+@app.route('/addstream')
+def addstream(stream_link=None):
+    raw_in = request.query_string.decode()
 
-#@app.route('/addtags/')
-def addtags(stream_link, csvtags):
+    if raw_in == '':
+        return render_template(
+            'joe4.html'
+
+        )
+    new_url = raw_in[4:len(raw_in)]
+    stream_file = open('stream_database.csv','a')
+    stream_file.write(new_url)
+    stream_file.close()
+    return redirect('/addtags')
+
+    
+
+@app.route('/addtags')
+def addtags(csvtags = None):
+
+    
+    raw_in = request.query_string.decode()
+    less_raw_in = raw_in.replace('%2C',',')
+    csvtags = less_raw_in.replace('Tag=','')
+
+    if csvtags == '' or csvtags == None:
+        return render_template(
+            'joe5.html'
+        )
     stream_file = open('stream_database.csv','r')
 
     index = 0
@@ -251,22 +272,12 @@ def addtags(stream_link, csvtags):
 
     
     
-    print(stream_list)
-
-    if stream_link in stream_list:
-        for item in stream_list:
-            if stream_link != item:
-                index += 1
-            else:
-                findex = index
-    else:
-        print("THIS WILL BE A RETURN FUNCITON WITH AN ERROR")
-        return("Link not defined, try the add streams link")
+    
 
     tag_list = tagcleaner(tag_list)
 
-    for item in new_tags:
-        tag_list[findex].append(item)
+    tag_list.pop()
+    tag_list.append(new_tags)
 
     stream_file.close()
     stream_file = open('stream_database.csv','w')
@@ -282,8 +293,9 @@ def addtags(stream_link, csvtags):
 
     stream_file.close()
     print(index)
-    print(findex)
+    print(index)
     print(tag_list)
+    return redirect('/home')
     
 def tagcleaner(tag_list):
     cleaned_tags = []
@@ -299,4 +311,3 @@ def tagcleaner(tag_list):
         doublec_tags.append(item)
     return doublec_tags
 
-addtags('https://zoo.sandiegozoo.org/cams/polar-cam','bear,arctic,paws,pol,pola')
